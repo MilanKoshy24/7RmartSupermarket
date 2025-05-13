@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import constants.Constant;
+
 public class CategoryPage {
 	
 	
@@ -33,39 +35,45 @@ public class CategoryPage {
 	
 	
 	
-	public void categoryButtonClick() {
+	public CategoryPage categoryButtonClick() {
 
 		categoryButton.click();
+		return this;
 
 	}
 
-	public void newCategoryButtonClick() {
+	public CategoryPage newCategoryButtonClick() {
 
 		newCategoryButton.click();
+		return this;
 
 	}
 
-	public void categoryNameClick() {
+	public CategoryPage categoryNameClick() {
 
-		categoryName.sendKeys("mangos3");
+		categoryName.sendKeys(Constant.CATEGORYNAME);
+		return this;
 
 	}
 	
-	public void groupSelectionClick() {
+	public CategoryPage groupSelectionClick() {
 
 		groupSelection.click();
+		return this;
 
 	}
 	
-	public void categoryImageInput() {
+	public CategoryPage categoryImageInput() {
 
-		categoryImage.sendKeys("C:\\Users\\milan\\eclipse-workspace\\7RmartSupermarket\\src\\test\\resources\\mango.jpg");
+		categoryImage.sendKeys(Constant.CATEGORYIMAGE);
+		return this;
 
 	}
 	
-	public void categorySaveClick() {
+	public CategoryPage categorySaveClick() {
 
 		categorySave.click();
+		return this;
 
 	}
 	
@@ -76,22 +84,24 @@ public class CategoryPage {
 	}
 
 	
-	public void searchButtonClick() {
+	public CategoryPage searchButtonClick() {
 
 		searchButton.click();
+		return this;
 
 	}
 	
-	public void searchInputClick() {
+	public CategoryPage searchInputClick() {
 
-		searchInput.sendKeys("mangos");
+		searchInput.sendKeys(Constant.CATEGORYSEARCHINPUT);
+		return this;
 
 	}
 	
-	public void inputSearchClick() {
+	public CategoryPage inputSearchClick() {
 
 		inputSearch.click();
-
+		return this;
 	}
 	
 	

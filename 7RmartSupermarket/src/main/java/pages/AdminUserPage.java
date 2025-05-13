@@ -6,6 +6,9 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.Select;
 
+import constants.Constant;
+import utilities.WaitUtility;
+
 public class AdminUserPage {
 
 	public WebDriver driver;
@@ -33,69 +36,81 @@ public class AdminUserPage {
 	
 	
 	
-	public void sidebarAdminusersClick() {
+	public HomePage sidebarAdminusersClick() {
 
 		sidebarAdminUsers.click();
+		return new HomePage(driver);
 
 	}
 
-	public void sidebarManageUsersClick() {
-
+	public AdminUserPage sidebarManageUsersClick() {
+		WaitUtility wait = new WaitUtility();
+		wait.waitForWebElementToBeclickable(driver, sidebarManageUsers);
 		sidebarManageUsers.click();
+		return this;
 
 	}
 
-	public void adminusersNewButtonClick() {
+	public AdminUserPage adminusersNewButtonClick() {
 
 		adminuserNewButton.click();
+		return this;
 
 	}
 
-	public void usernameInputField(String usernameNew) {
+	public AdminUserPage usernameInputField(String usernameNew) {
 
 		usernameField.sendKeys(usernameNew);
+		return this;
 
 	}
 
-	public void passwordInputField(String passwordNew) {
+	public AdminUserPage passwordInputField(String passwordNew) {
 
 		passowrdField.sendKeys(passwordNew);
+		return this;
 
 	}
 
-	public void usertypeDropdownSelection() {
+	public AdminUserPage usertypeDropdownSelection() {
 
 		Select selection = new Select(usertypeDropdown);
 		selection.selectByIndex(1);
+		return this;
 
 	}
 
-	public void saveButtonClick() {
+	public AdminUserPage saveButtonClick() {
 
 		saveButton.click();
+		return this;
 
 	}
 
-	public void searchButtonClick() {
+	public AdminUserPage searchButtonClick() {
 
 		searchButton.click();
+		return this;
 	}
 
-	public void searchFieldClick() {
+	public AdminUserPage searchFieldClick() {
 
-		searchField.sendKeys("MonkeyDluffy");
+		searchField.sendKeys(Constant.ADMINSEARCHINPUT);
+		return this;
 	}
 
-	public void searchUserSelectionClick() {
+	public AdminUserPage searchUserSelectionClick() {
 
 		Select selection = new Select(searchUsertypeSelection);
 		selection.selectByIndex(1);
+		return this;
 
 	}
 
-	public void searchingButton() {
+	public AdminUserPage searchingButton() {
 
 		searchingButton.click();
+		return this;
 
 	}
 	

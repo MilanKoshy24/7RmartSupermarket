@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationCore.Base;
+import constants.Messages;
 import pages.CategoryPage;
 import pages.LoginPage;
 import utilities.ExcelUtility;
@@ -35,7 +36,7 @@ public class CategoryTest extends Base{
 		
 			
 		boolean iscategoryAddedMessgeDisplayed = category.categoryAddedMessgeDisplayed();
-		Assert.assertTrue(iscategoryAddedMessgeDisplayed, "User was not able to add category");
+		Assert.assertTrue(iscategoryAddedMessgeDisplayed, Messages.NEWCATEGORYERROR);
 	}
 	
 	@Test(description="verifying whether user is able to search category")
@@ -61,7 +62,7 @@ public class CategoryTest extends Base{
 		
 			
 		boolean issearchAssertionDisplayed = category.searchAssertionDisplayed();
-		Assert.assertTrue(issearchAssertionDisplayed, "User was not able to search category");
+		Assert.assertTrue(issearchAssertionDisplayed,Messages.CATEGORYSEARCHERROR);
 	}
 	
 	

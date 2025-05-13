@@ -21,22 +21,27 @@ public class LoginPage {
 	@FindBy(xpath = "//p[text()='Dashboard']")private WebElement dashboard;
 	@FindBy(xpath = "//b[text()='7rmart supermarket']")private WebElement pagetitle;
 
-	public void enterUsernameOnUsernameField(String username) {
+	public LoginPage enterUsernameOnUsernameField(String username) {
 
 		usernamefield.sendKeys(username);
+		return this;
 
 	}
 
-	public void enterPasswordOnPasswordField(String password) {
+	public LoginPage enterPasswordOnPasswordField(String password) {
 
 		passwordfield.sendKeys(password);
+		return this;
 	}
 
-	public void clickOnLoginButton() {
+	public HomePage clickOnLoginButton() {
 
 		loginbutton.click();
+		return new HomePage(driver);
 	}
 
+	
+	
 	public boolean dashboardDisplayed() {
 		
 		return dashboard.isDisplayed();

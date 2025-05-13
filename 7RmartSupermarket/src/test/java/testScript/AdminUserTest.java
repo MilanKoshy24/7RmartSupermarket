@@ -6,15 +6,20 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationCore.Base;
+import constants.Messages;
 import pages.AdminUserPage;
+import pages.HomePage;
 import pages.LoginPage;
 import utilities.ExcelUtility;
 import utilities.RandomDataUtility;
 
 public class AdminUserTest extends Base {
+	HomePage home;
 
 	@Test(description="Verifying whether new user can be created ")
 	public void addNewUser() throws IOException {
+		
+		
 
 		String username = ExcelUtility.getStringData(0, 0, "LoginPage");
 		String password = ExcelUtility.getStringData(0, 1, "LoginPage");
@@ -40,7 +45,7 @@ public class AdminUserTest extends Base {
 		addUser.saveButtonClick();
 
 		boolean issuccessAlertDisplayed = addUser.successAlertDisplayed();
-		Assert.assertTrue(issuccessAlertDisplayed, "New user creation is not successful");
+		Assert.assertTrue(issuccessAlertDisplayed,Messages.NEWUSERERROR );
 	}
 
 	@Test(description="Verifying whether newly created user can be searched")
@@ -64,7 +69,7 @@ public class AdminUserTest extends Base {
 		addUser.searchingButton();
 		
 		boolean isserachTitleDisplayed = addUser.searchTitleDisplayed();
-		Assert.assertTrue(isserachTitleDisplayed, "User was not able to reach search page");
+		Assert.assertTrue(isserachTitleDisplayed,Messages.USERSEARCHERROR);
 
 	}
 

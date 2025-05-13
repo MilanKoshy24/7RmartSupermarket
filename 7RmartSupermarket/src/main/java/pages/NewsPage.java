@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import constants.Constant;
+
 public class NewsPage {
 
 	public WebDriver driver;
@@ -32,25 +34,29 @@ public class NewsPage {
 
 	
 	
-	public void manageNewsCardClick() {
+	public NewsPage manageNewsCardClick() {
 
 		manageNewsCard.click();
+		return this;
 
 	}
 	
-	public void newNewsButtonClick() {
+	public NewsPage newNewsButtonClick() {
 
 		newNewsButton.click();
+		return this;
 
 	}
-	public void newNewsContentClick() {
+	public NewsPage newNewsContentClick() {
 
-		newNewsContent.sendKeys("Milans new news 3");
+		newNewsContent.sendKeys(Constant.NEWNEWSCONTENT);
+		return this;
 
 	}
-	public void newsSaveButtonClick() {
+	public NewsPage newsSaveButtonClick() {
 
 		newsSaveButton.click();
+		return this;
 
 	}
 	
@@ -59,21 +65,23 @@ public class NewsPage {
 		return newsCreationSuccessMessage.isDisplayed();
 	}
 	
-	public void newsSerachPageClick() {
+	public NewsPage newsSerachPageClick() {
 
 		newsSerachPage.click();
+		return this;
+	}
+	
+	public NewsPage searchInputFieldClick() {
+
+		searchInputField.sendKeys(Constant.NEWSSEARCHCONTENT);
+		return this;
 
 	}
 	
-	public void searchInputFieldClick() {
-
-		searchInputField.sendKeys("milan");
-
-	}
-	
-	public void searchButtonClick() {
+	public NewsPage searchButtonClick() {
 
 		searchButton.click();
+		return this;
 
 	}
 	

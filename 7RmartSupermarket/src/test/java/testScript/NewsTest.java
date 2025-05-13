@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationCore.Base;
+import constants.Messages;
 import pages.LoginPage;
 import pages.NewsPage;
 import utilities.ExcelUtility;
@@ -20,9 +21,7 @@ public class NewsTest extends Base {
 		LoginPage login = new LoginPage(driver);
 		NewsPage news = new NewsPage(driver);
 
-		login.enterUsernameOnUsernameField(username);
-		login.enterPasswordOnPasswordField(password);
-		login.clickOnLoginButton();
+		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickOnLoginButton();
 		
 		news.manageNewsCardClick();
 		news.newNewsButtonClick();
@@ -31,7 +30,7 @@ public class NewsTest extends Base {
 		
 		
 		boolean issuccessAlertDisplayed = news.successAlertDisplayed();
-		Assert.assertTrue(issuccessAlertDisplayed, "New news creation is not successful");
+		Assert.assertTrue(issuccessAlertDisplayed,Messages.NEWNEWSERROR );
 	}
 
 	
@@ -54,6 +53,6 @@ public class NewsTest extends Base {
 		
 		
 		boolean issearchAssertionValidated = news.searchAssertion();
-		Assert.assertTrue(issearchAssertionValidated, "search is not not successful");
+		Assert.assertTrue(issearchAssertionValidated, Messages.NEWSSEARCHERROR);
 	}
 }

@@ -1,4 +1,4 @@
-package pages;
+ package pages;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -20,15 +20,17 @@ public class HomePage {
 	@FindBy(xpath = "//a[@href='https://groceryapp.uniqassosiates.com/admin/logout' and @class='dropdown-item']")private WebElement logout;
 	@FindBy(xpath = "//b[text()='7rmart supermarket']")private WebElement pagetitle;
 
-	public void topRightAdminClick() {
+	public HomePage topRightAdminClick() {
 
 		topRightAdmin.click();
+		return this;
 
 	}
 
-	public void logoutClick() {
+	public LoginPage logoutClick() {
 
 		logout.click();
+		return new LoginPage(driver);
 	}
 
 	public boolean titleDisplayed() {

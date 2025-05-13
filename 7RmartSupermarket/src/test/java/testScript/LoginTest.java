@@ -5,31 +5,33 @@ import java.io.IOException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import automationCore.Base;
+import constants.Messages;
 import pages.LoginPage;
 
 import utilities.ExcelUtility;
 
 public class LoginTest extends Base {
 
-	@Test(priority=1,description="Verifying whether logging in can be done with valid credentials")
+	@Test(priority = 1, description = "Verifying whether logging in can be done with valid credentials", retryAnalyzer = retry.Retry.class)
 	public void verifyUserLoginWithValidCredentials() throws IOException {
 		String username = ExcelUtility.getStringData(0, 0, "LoginPage");
 		String password = ExcelUtility.getStringData(0, 1, "LoginPage");
 
 		LoginPage login = new LoginPage(driver);
 
-		login.enterUsernameOnUsernameField(username);
-		login.enterPasswordOnPasswordField(password);
-		login.clickOnLoginButton();
+		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickOnLoginButton();
+
 		boolean isdashboarddisplayed = login.dashboardDisplayed();
-		Assert.assertTrue(isdashboarddisplayed, "User is unable to login successfully");
+		Assert.assertTrue(isdashboarddisplayed, Messages.VALIDCREDENTIALERROR);
 
 	}
 
-	@Test(priority=2,description="Verifying whether logging in can be done with valid username and invalid password")
+	@Test(priority = 2, description = "Verifying whether logging in can be done with valid username and invalid password", groups = {
+			"smoke" })
 	public void verifyUserLoginWithValidUsernameAndInvalidPassword() throws IOException {
 
 		String username = ExcelUtility.getStringData(1, 0, "LoginPage");
@@ -37,16 +39,16 @@ public class LoginTest extends Base {
 
 		LoginPage login = new LoginPage(driver);
 
-		login.enterUsernameOnUsernameField(username);
-		login.enterPasswordOnPasswordField(password);
-		login.clickOnLoginButton();
+		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickOnLoginButton();
+
 		String actual = login.getpagetitle();
 		String expected = "7rmart supermarket";
-		Assert.assertEquals(actual, expected, "User is able to login with invalid username");
+		Assert.assertEquals(actual, expected, Messages.VALIDUSERNAMEINVALIDPASSWORD);
 
 	}
 
-	@Test(priority=3,description="Verifying whether logging in can be done with invalid username and valid password")
+	@Test(priority = 3, description = "Verifying whether logging in can be done with invalid username and valid password", groups = {
+			"smoke" })
 	public void verifyLoginWithInvalidUsernameAndValidPassword() throws IOException {
 
 		String username = ExcelUtility.getStringData(2, 0, "LoginPage");
@@ -54,30 +56,33 @@ public class LoginTest extends Base {
 
 		LoginPage login = new LoginPage(driver);
 
-		login.enterUsernameOnUsernameField(username);
-		login.enterPasswordOnPasswordField(password);
-		login.clickOnLoginButton();
-		
+		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickOnLoginButton();
+
 		boolean istitleDisplayed = login.titleDisplayed();
-		Assert.assertTrue(istitleDisplayed, "user was able to login with invalid credentials");
+		Assert.assertTrue(istitleDisplayed, Messages.INVALIDUSERNAMEVALIDPASSWORDERROR);
 
 	}
 
-	@Test(priority=4,description="Verifying whether logging in can be done with invalid credentials")
-	public void verifyUserLoginWithInvalidCredentials() throws IOException {
+	@Test(dataProvider = "loginProvider", priority = 4, description = "Verifying whether logging in can be done with invalid credentials")
+	public void verifyUserLoginWithInvalidCredentials(String username, String password) throws IOException {
 
-		String username = ExcelUtility.getStringData(3, 0, "LoginPage");
-		String password = ExcelUtility.getStringData(3, 1, "LoginPage");
+		// String username = ExcelUtility.getStringData(3, 0, "LoginPage");
+		// String password = ExcelUtility.getStringData(3, 1, "LoginPage");
 
 		LoginPage login = new LoginPage(driver);
 
-		login.enterUsernameOnUsernameField(username);
-		login.enterPasswordOnPasswordField(password);
-		login.clickOnLoginButton();
-		
+		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickOnLoginButton();
+
 		boolean istitleDisplayed = login.titleDisplayed();
-		Assert.assertTrue(istitleDisplayed, "user was able to login with invalid credentials");
+		Assert.assertTrue(istitleDisplayed, Messages.INVALIDCREDENTIALERROR);
 
 	}
 
+	@DataProvider(name = "loginProvider")
+	public Object[][] getDataFromDataProvider() throws IOException {
+		return new Object[][] { new Object[] { "1234", "1234" }, new Object[] { "1234", "1234" }
+
+		};
+
+	}
 }

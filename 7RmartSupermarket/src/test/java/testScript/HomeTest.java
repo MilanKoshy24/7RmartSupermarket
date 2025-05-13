@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import automationCore.Base;
+import constants.Messages;
 import pages.HomePage;
 import pages.LoginPage;
 import utilities.ExcelUtility;
@@ -20,16 +21,13 @@ public class HomeTest extends Base {
 		LoginPage login = new LoginPage(driver);
 		HomePage home = new HomePage(driver);
 
-		login.enterUsernameOnUsernameField(username);
-		login.enterPasswordOnPasswordField(password);
-		login.clickOnLoginButton();
+		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickOnLoginButton();
 		
-		home.topRightAdminClick();
-		home.logoutClick();
+		home.topRightAdminClick().logoutClick();
 		
 		
 		boolean istitleDisplayed = login.titleDisplayed();
-		Assert.assertTrue(istitleDisplayed, "User was not able to logout properly");
+		Assert.assertTrue(istitleDisplayed,Messages.LOGOUTERROR);
 	}
 	
 	
