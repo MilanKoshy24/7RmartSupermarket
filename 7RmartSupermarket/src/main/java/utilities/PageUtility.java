@@ -19,4 +19,14 @@ public class PageUtility {
 		Select object = new Select(element);
 		object.selectByIndex(indexNumber);
 	}
+	
+	public void selectDropdownWithValue(WebElement element, String value) {
+		Select object = new Select(element);
+		object.selectByValue(value);
+	}
+
+	public void selectDropdownWithVisibletext(WebElement element, String visibletext) {
+		Select object = new Select(element);
+		object.selectByVisibleText(visibletext);
+	}
 }
