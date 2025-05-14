@@ -21,43 +21,31 @@ public class Base {
 
 	Properties prop;
 	FileInputStream fs;
-	
-	
+
 	public WebDriver driver;
 
-	@BeforeMethod(alwaysRun=true)
+	@BeforeMethod(alwaysRun = true)
 	@Parameters("browser")
 	public void initializeBrowser(String browser) throws Exception {
-		prop=new Properties();
-		fs=new FileInputStream(Constant.CONFIGFILE);
+		prop = new Properties();
+		fs = new FileInputStream(Constant.CONFIGFILE);
 		prop.load(fs);
-		
-		if(browser.equalsIgnoreCase("chrome")) {
-		    driver=new ChromeDriver();	
-		    }
-		    else if(browser.equalsIgnoreCase("edge")){
-		    	driver=new EdgeDriver();
-		    }
-		    else if(browser.equalsIgnoreCase("firefox")) {
-		    	driver=new FirefoxDriver();
-		    }
-		    else {
-		    	throw new Exception("invalid browser");
-		    }
+
+		if (browser.equalsIgnoreCase("chrome")) {
+			driver = new ChromeDriver();
+		} else if (browser.equalsIgnoreCase("edge")) {
+			driver = new EdgeDriver();
+		} else if (browser.equalsIgnoreCase("firefox")) {
+			driver = new FirefoxDriver();
+		} else {
+			throw new Exception("invalid browser");
+		}
 		driver.get(prop.getProperty("url"));
 		driver.manage().window().maximize();
 		driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5)); // used in broswer_intial time
 	}
 
-	
-	
-	
-	
-	
-	
-	
-	
-	@AfterMethod(alwaysRun=true)
+	@AfterMethod(alwaysRun = true)
 
 	public void driverQuit(ITestResult iTestResult) throws IOException
 

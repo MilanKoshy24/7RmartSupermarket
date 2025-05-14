@@ -15,11 +15,16 @@ public class LoginPage {
 
 	}
 
-	@FindBy(name = "username")private WebElement usernamefield;
-	@FindBy(name = "password")private WebElement passwordfield;
-	@FindBy(xpath = "//button[text()='Sign In']")private WebElement loginbutton;
-	@FindBy(xpath = "//p[text()='Dashboard']")private WebElement dashboard;
-	@FindBy(xpath = "//b[text()='7rmart supermarket']")private WebElement pagetitle;
+	@FindBy(name = "username")
+	private WebElement usernamefield;
+	@FindBy(name = "password")
+	private WebElement passwordfield;
+	@FindBy(xpath = "//button[text()='Sign In']")
+	private WebElement loginbutton;
+	@FindBy(xpath = "//p[text()='Dashboard']")
+	private WebElement dashboard;
+	@FindBy(xpath = "//b[text()='7rmart supermarket']")
+	private WebElement pagetitle;
 
 	public LoginPage enterUsernameOnUsernameField(String username) {
 
@@ -40,21 +45,19 @@ public class LoginPage {
 		return new HomePage(driver);
 	}
 
-	
-	
 	public boolean dashboardDisplayed() {
-		
+
 		return dashboard.isDisplayed();
 	}
 
 	public String getpagetitle() {
-		
+
 		return pagetitle.getText();
 	}
-	
+
 	public boolean titleDisplayed() {
-		
+
 		return pagetitle.isDisplayed();
 	}
-	
+
 }

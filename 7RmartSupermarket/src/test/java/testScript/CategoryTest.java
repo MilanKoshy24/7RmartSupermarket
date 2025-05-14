@@ -8,10 +8,14 @@ import org.testng.annotations.Test;
 import automationCore.Base;
 import constants.Messages;
 import pages.CategoryPage;
+import pages.HomePage;
 import pages.LoginPage;
 import utilities.ExcelUtility;
 
 public class CategoryTest extends Base{
+	
+	HomePage home;
+	CategoryPage category;
 
 	@Test(description="verifying whether user is able to add new category")
 	public void addCategory() throws IOException {
@@ -19,19 +23,14 @@ public class CategoryTest extends Base{
 		String password = ExcelUtility.getStringData(0, 1, "LoginPage");
 
 		LoginPage login = new LoginPage(driver);
-		CategoryPage category = new CategoryPage(driver);
-
-		login.enterUsernameOnUsernameField(username);
-		login.enterPasswordOnPasswordField(password);
-		login.clickOnLoginButton();
 		
+
+		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password);
+		home=login.clickOnLoginButton();
+		
+		category=home.categoryButtonClick();
 	
-		category.categoryButtonClick();
-		category.newCategoryButtonClick();
-		category.categoryNameClick();
-		category.groupSelectionClick();
-		category.categoryImageInput();
-		category.categorySaveClick();
+		category.newCategoryButtonClick().categoryNameClick().groupSelectionClick().categoryImageInput().categorySaveClick();
 		
 		
 			
@@ -45,17 +44,13 @@ public class CategoryTest extends Base{
 		String password = ExcelUtility.getStringData(0, 1, "LoginPage");
 
 		LoginPage login = new LoginPage(driver);
-		CategoryPage category = new CategoryPage(driver);
-
-		login.enterUsernameOnUsernameField(username);
-		login.enterPasswordOnPasswordField(password);
-		login.clickOnLoginButton();
 		
+
+		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password);
+		home=login.clickOnLoginButton();
+		category=home.categoryButtonClick();
 	
-		category.categoryButtonClick();
-		category.searchButtonClick();
-		category.searchInputClick();
-		category.inputSearchClick();
+		category.searchButtonClick().searchInputClick().inputSearchClick();
 		
 	
 		

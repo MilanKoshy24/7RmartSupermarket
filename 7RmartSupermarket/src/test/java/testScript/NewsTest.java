@@ -7,11 +7,14 @@ import org.testng.annotations.Test;
 
 import automationCore.Base;
 import constants.Messages;
+import pages.HomePage;
 import pages.LoginPage;
 import pages.NewsPage;
 import utilities.ExcelUtility;
 
 public class NewsTest extends Base {
+	NewsPage news;
+	HomePage home;
 	
 	@Test(description="verifying whether user is able to add new news")
 	public void addNews() throws IOException {
@@ -19,14 +22,13 @@ public class NewsTest extends Base {
 		String password = ExcelUtility.getStringData(0, 1, "LoginPage");
 
 		LoginPage login = new LoginPage(driver);
-		NewsPage news = new NewsPage(driver);
+	
 
-		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password).clickOnLoginButton();
+		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password);
+		home=login.clickOnLoginButton();
+		news=home.manageNewsCardClick();
 		
-		news.manageNewsCardClick();
-		news.newNewsButtonClick();
-		news.newNewsContentClick();
-		news.newsSaveButtonClick();
+		news.newNewsButtonClick().newNewsContentClick().newsSaveButtonClick();
 		
 		
 		boolean issuccessAlertDisplayed = news.successAlertDisplayed();
@@ -40,16 +42,12 @@ public class NewsTest extends Base {
 		String password = ExcelUtility.getStringData(0, 1, "LoginPage");
 
 		LoginPage login = new LoginPage(driver);
-		NewsPage news = new NewsPage(driver);
 
-		login.enterUsernameOnUsernameField(username);
-		login.enterPasswordOnPasswordField(password);
-		login.clickOnLoginButton();
+		login.enterUsernameOnUsernameField(username).enterPasswordOnPasswordField(password);
+		home=login.clickOnLoginButton();
 		
-		news.manageNewsCardClick();
-		news.newsSerachPageClick();
-		news.searchInputFieldClick();
-		news.searchButtonClick();
+		news=home.manageNewsCardClick();
+		news.newsSerachPageClick().searchInputFieldClick().searchButtonClick();
 		
 		
 		boolean issearchAssertionValidated = news.searchAssertion();

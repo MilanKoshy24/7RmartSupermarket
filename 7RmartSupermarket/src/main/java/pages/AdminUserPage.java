@@ -20,36 +20,28 @@ public class AdminUserPage {
 
 	}
 
-	@FindBy(xpath = "//a[@class='nav-link']//p[contains(text(),'Admin Users')]")private WebElement sidebarAdminUsers;
-	@FindBy(xpath = "//p[text()='Manage Users']")private WebElement sidebarManageUsers;
-	@FindBy(xpath = "//a[@onclick='click_button(1)']")private WebElement adminuserNewButton;
-	@FindBy(xpath = "//input[@name='username']")private WebElement usernameField;
-	@FindBy(xpath = "//input[@name='password']")private WebElement passowrdField;
-	@FindBy(xpath = "//select[@name='user_type']")private WebElement usertypeDropdown;
-	@FindBy(xpath = "//button[@type='submit' and @name='Create']")private WebElement saveButton;
-	@FindBy(xpath = "//a[@class='btn btn-rounded btn-primary']")private WebElement searchButton;
-	@FindBy(xpath = "//input[@name='un']")private WebElement searchField;
-	@FindBy(xpath = "//select[@name='ut']")private WebElement searchUsertypeSelection;
-	@FindBy(xpath = "//button[@class='btn btn-block-sm btn-danger' and @name='Search']")private WebElement searchingButton;
-	@FindBy(xpath = "//h4[text()='Search Admin Users']")private WebElement searchTitle;
-	@FindBy(xpath = "//h5[contains(text(), 'Alert')]")private WebElement userCreationSuccessMessage;
-	
-	
-	
-	public HomePage sidebarAdminusersClick() {
-
-		sidebarAdminUsers.click();
-		return new HomePage(driver);
-
-	}
-
-	public AdminUserPage sidebarManageUsersClick() {
-		WaitUtility wait = new WaitUtility();
-		wait.waitForWebElementToBeclickable(driver, sidebarManageUsers);
-		sidebarManageUsers.click();
-		return this;
-
-	}
+	@FindBy(xpath = "//a[@onclick='click_button(1)']")
+	private WebElement adminuserNewButton;
+	@FindBy(xpath = "//input[@name='username']")
+	private WebElement usernameField;
+	@FindBy(xpath = "//input[@name='password']")
+	private WebElement passowrdField;
+	@FindBy(xpath = "//select[@name='user_type']")
+	private WebElement usertypeDropdown;
+	@FindBy(xpath = "//button[@type='submit' and @name='Create']")
+	private WebElement saveButton;
+	@FindBy(xpath = "//a[@class='btn btn-rounded btn-primary']")
+	private WebElement searchButton;
+	@FindBy(xpath = "//input[@name='un']")
+	private WebElement searchField;
+	@FindBy(xpath = "//select[@name='ut']")
+	private WebElement searchUsertypeSelection;
+	@FindBy(xpath = "//button[@class='btn btn-block-sm btn-danger' and @name='Search']")
+	private WebElement searchingButton;
+	@FindBy(xpath = "//h4[text()='Search Admin Users']")
+	private WebElement searchTitle;
+	@FindBy(xpath = "//h5[contains(text(), 'Alert')]")
+	private WebElement userCreationSuccessMessage;
 
 	public AdminUserPage adminusersNewButtonClick() {
 
@@ -113,16 +105,15 @@ public class AdminUserPage {
 		return this;
 
 	}
-	
+
 	public boolean searchTitleDisplayed() {
 
 		return searchTitle.isDisplayed();
 	}
-	
+
 	public boolean successAlertDisplayed() {
 
 		return userCreationSuccessMessage.isDisplayed();
 	}
-
 
 }

@@ -9,17 +9,17 @@ public class PageUtility {
 		Select object = new Select(element);
 		object.selectByIndex(indexNumber);
 	}
-	
+
 	public void selectRadiobuttonWithIndex(WebElement element, int indexNumber) {
 		Select object = new Select(element);
 		object.selectByIndex(indexNumber);
 	}
-	
+
 	public void selectCheckboxWithIndex(WebElement element, int indexNumber) {
 		Select object = new Select(element);
 		object.selectByIndex(indexNumber);
 	}
-	
+
 	public void selectDropdownWithValue(WebElement element, String value) {
 		Select object = new Select(element);
 		object.selectByValue(value);
